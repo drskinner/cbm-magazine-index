@@ -1,0 +1,68 @@
+body {
+  font-family: Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  padding: 0px 10px 0px 10px;
+}
+
+header {
+  display: grid;
+  grid-template-columns: 250px auto;
+  margin-bottom: 10px
+}
+
+.header-left {
+  text-align: center;
+}
+
+.cbm-logo {
+  max-height: 200px;
+  width: auto;
+}
+
+.header-right {
+  background-image: url('cbmmag_title.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 95% 70%;
+}
+
+.nav-menu {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  height: 95%;
+}
+
+.layout-bar {
+  height: 6px;
+  margin: 3px 0 3px 0;
+}
+
+.bar-red {
+  background-color: #ff0000;
+}
+
+.bar-orange {
+  background-color: #ff8c00;
+}
+
+.bar-yellow {
+  background-color: #ffd700;
+}
+
+.bar-green {
+  background-color: #228b22;
+}
+
+.bar-blue {
+  background-color: #00bfff;
+}
+
+footer {
+  background: #2e2c9b;
+  color: white;
+  height: auto;
+  margin-top: 20px;
+  padding: 10px 20px 10px 20px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

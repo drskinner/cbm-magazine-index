@@ -1,0 +1,40 @@
+<div class="public-page-title">
+  <%= image_tag('about.png', alt: 'About this project', class: 'public-page-title-png') %>
+</div>
+
+<section class="wall-of-text">
+<p>The <i>Commodore 8-bit Magazine Index</i> is a detailed catalogue of the articles published in 8-bit Commodore-specific print magazines.</p>
+
+<p>The ultimate goal is to catalogue everything (except advertising), but for the first phase, I've made the decision to limit the catalogue to
+<em>reviews</em>, <em>type-ins</em>, and <em>articles</em>. What constitutes an article in Phase I is a bit arbitrary but it may be easier
+to describe what <em>isn't</em> making the initial cut. I'm omitting editorials, reader letters, press releases, lists of products or news bites
+without context, cute sidebars, puzzles, contests, jokes, and trivia. I did make an exception for Jim Brain's 
+<%#= link_to 'Commodore Trivia',
+            public_search_path(by_magazine: Magazine.find_by(name: 'Commodore World').id,
+                               author_contains: 'Brain',
+                               'has_all_tags[]': "#{Tag.find_by(name: 'trivia').id}"),
+                               data: { turbolinks: false } %>,
+published in <i>Commodore World</i>, for three reasons: (1) Jim describes his trivia questions as his "gift to the community at large"
+and I think that deserves some recognition, (2) the trivia represents a rare bit of cross-talk between Usenet and a print publication, and
+(3) some of the discussions of trivia answers are detailed enough to be articles in their own right.</p>
+
+<p>I'm also leaving out regular features that consist entirely of helpful hints and programming snippets, so columns like <i>RUN's "Magic"</i> or
+<i>Transactor's "Bits"</i> have been omitted. These columns absolutely deserve to be indexed but that's too big a job for Phase I.</p>
+
+<p>I have to admit, this index is biased towards North American publications but these are the magazines I grew up with here in Canada,
+so it only makes sense to start with what I know. I've never been terribly interested in game-review magazines, so I didn't spend any
+time with <i>Zzap!</i>, <i>Commodore Format</i>, or any similar game magazines published in the UK, but I do hope I get the opportunity
+to learn about any non-game-centric magazines that were published outside of my home continent. There's already an excellent
+<a href="https://commodoreformatarchive.com/" target="_blank">Commodore Format Archive</a> if you would
+like to learn more about that publication. I've also restricted my cataloguing work
+to 8-bit Commodores, so you won't find a lot of Amiga coverage here unless it intersects with 8-bit topics in some way.</p>
+
+<p>The current version of the CBM Magazine Index is running on a paid Heroku dyno with generous limitations on the size of the
+database&mdash;enough to index every article in every 8-bit Commodore publication with lots of room left over. My current plan is
+to complete the Phase I cataloguing of <i>Compute!'s Gazette</i> (including the disk-only issues), <i>dieHard</i>, <i>geoWorld</i>,
+<i>Info</i>, <i>Commodore World</i>, <i>Transactor</i>, <i>RUN</i>, <i>The TORPET</i>, <i>TPUG Magazine</i>, <i>Ahoy!</i>,
+<i>Commander</i>, and <i>Commodore Magazine</i> in all its incarnations (including <i>Micro</i> and <i>Power/Play</i> among others).
+You can track my progress on the <%= link_to 'status page', public_status_path %>. Enjoy!</p>
+
+<p>&mdash;Dr. Myles L. Skinner, Curator</p>
+</section>

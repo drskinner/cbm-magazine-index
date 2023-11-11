@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Commodore 8-Bit Magazine Index</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+
+    <%= favicon_link_tag asset_path('favicon.ico') %>
+  </head>
+
+  <body>
+    <header>
+      <div class="header-left">
+        <%#= link_to (user_signed_in? ? public_welcome_path : root_path) do %>
+          <%= image_tag('cbmmag_logo.png', alt: 'CBM Magazine Index', class: 'cbm-logo') %>
+        <%# end %>
+      </div>
+      <div class="header-right">
+        <nav class="nav-menu" id="public-nav">
+          <%= link_to 'About', public_about_path %>
+        </nav>
+      </div>
+    </header>
+
+    <div class="layout-bar bar-red"></div>
+    <div class="layout-bar bar-orange"></div>
+    <div class="layout-bar bar-yellow"></div>
+    <div class="layout-bar bar-green"></div>
+    <div class="layout-bar bar-blue"></div>
+
+    <section id="title-bar">
+      <div id="title-content">
+        <% if yield(:title).present? %>
+          <h1 id="page-title"><%= yield(:title) %></h1>
+        <% end %>
+      </div>
+    </section>
+
+    <%= yield %>
+
+    <footer>
+      <%= tag.span do %>
+        Commodore 8-Bit Magazine Index &ndash; Copyright &copy; <%= Time.now.year %> Myles L. Skinner &ndash; All Rights Reserved.
+      <% end %>
+      <%# unless user_signed_in? %>
+        <span class="admin-login">
+          <%#= link_to 'Admin Login', new_session_path('user'), class: 'navbar-link' %>
+        </span>
+      <%# end %>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,27 @@
+.public-page-title {
+  text-align: center;
+}
+
+.public-page-title-png {
+  max-height: 72px;
+}
+
+#public-nav {
+  font-size: 200%;
+  color: #000080;
+  margin: 20px 0 10px 0;
+}
+
+#public-nav a {
+  color: #5c4ea5;
+  text-decoration: none;
+  margin: 0 10px 0 10px;
+}
+
+#public-nav a:hover {
+  color: #cc0000;
+}
+
+.wall-of-text {
+  margin: 0 100px 0 100px;
+}
