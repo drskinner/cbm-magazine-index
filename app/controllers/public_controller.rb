@@ -1,5 +1,5 @@
 class PublicController < ApplicationController
-  # skip_before_action :authenticate_user!
+  skip_before_action :authenticate_user!
 
   def status
     @magazines = Magazine.all.order(alpha_guide: :asc)

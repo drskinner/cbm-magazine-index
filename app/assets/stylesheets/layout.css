@@ -66,3 +66,20 @@ footer {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+span.admin-login {
+  float: right;
+}
+
+span.admin-login a {
+  color: white;
+}
+
+.footer-login-link {
+  color: #5c4ea5;
+  text-decoration: none;
+}
+
+.footer-login-link:hover {
+  color: #cc0000;
+}
