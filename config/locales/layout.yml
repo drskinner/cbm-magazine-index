@@ -1,0 +1,9 @@
+en:
+  messages:
+    no_data: "(No Data)"
+  page:
+    action_title:
+      edit: "Edit %{record}"
+      index: "Manage %{model}"
+      new: "Create %{model}"
+      show: "View %{record}"
