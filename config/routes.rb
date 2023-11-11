@@ -4,4 +4,8 @@ Rails.application.routes.draw do
 
   get 'public/about'
   get 'public/status'
+
+  resources :articles
+  resources :issues
+  resources :magazines
 end

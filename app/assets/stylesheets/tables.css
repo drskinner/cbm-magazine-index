@@ -1,0 +1,19 @@
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: #e2dff0;
+}
+
+td.magazine-name {
+  padding-left: 8px;
+}
+
+td.numeric-cell {
+  text-align: center;
+  min-width: 8em;
+  padding: 5px;
+}
+
+div.number-right-align {
+  text-align: right;
+  display: inline-block;
+  min-width: 3.5em;
+}

@@ -1,0 +1,63 @@
+<div class="public-page-title">
+  <%= image_tag('status.png', alt: 'Progress Report', class: 'public-page-title-png') %>
+</div>
+
+<style>
+.wrap {
+    text-align: right;
+    border: 2px dotted blue;
+    display: inline-block;
+    min-width: 2em;
+}
+.container {
+    border: 2px solid red;
+    text-align: center;
+    min-width: 7em;
+    padding: 5px;
+}
+</style>
+
+<section class="status-table">
+  <p>
+    <%= @article_count %> articles catalogued across
+    <%= Issue.joins(:articles).uniq.count %> issues.
+    (<%= overall_percent_complete %>% of <%= Issue.all.count %> registered
+     issues completed for Phase One.)
+  </p>
+</section>
+<section class="status-table">
+  <table class="table-striped">
+    <tr>
+      <th>Magazine</th>
+      <th>Issues Registered</th>
+      <th>Issues Read</th>
+      <th>Articles Catalogued</th>
+      <th>% Complete</th>
+    </tr>
+    <% @magazines.each do |magazine| %>
+      <tr>
+        <td class="magazine-name"><%= magazine.name %></td>
+        <td class="numeric-cell">
+          <div class="number-right-align">
+            <%= issues_registered(magazine) %>
+          </div>
+        </td>
+        <td class="numeric-cell">
+          <div class="number-right-align">
+            <%= issues_read(magazine) %>
+          </div>
+        </td>
+        <td class="numeric-cell">
+          <div class="number-right-align">
+            <%= articles_catalogued(magazine) %>
+          </div>
+        </td>
+        <td class="numeric-cell">
+          <div class="number-right-align">
+            <%= percent_complete(magazine) %>
+          </div>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+</section>
