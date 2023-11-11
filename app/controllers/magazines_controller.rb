@@ -7,6 +7,7 @@ class MagazinesController < ApplicationController
 
     @magazines =
       Magazine.accessible_by(current_ability)
+              .search(params.slice(:name_contains))
               .order(sort => direction)
   end
 end
