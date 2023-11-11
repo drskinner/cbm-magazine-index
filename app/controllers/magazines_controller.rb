@@ -5,10 +5,8 @@ class MagazinesController < ApplicationController
     sort = params[:sort] || :alpha_guide
     direction = params[:direction] || :asc
 
-    @magazines = Magazine.accessible_by(current_ability)
-    @full_count = @magazines.count
-
-    @magazines = @magazines.order(sort => direction)
-    #                        .page(params[:page])
+    @magazines =
+      Magazine.accessible_by(current_ability)
+              .order(sort => direction)
   end
 end
