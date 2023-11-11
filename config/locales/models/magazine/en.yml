@@ -1,0 +1,23 @@
+en:
+  magazine:
+    name:
+      ahoy: "Ahoy!"
+      cbm: "Commodore Magazine"
+      cbm_micro: "Commodore Microcomputers"
+      cbm_world: "Commodore World"
+      commander: "Commander"
+      compute: "Compute!"
+      compute_ii: "Compute II"
+      diehard: "dieHard"
+      gazette: "Compute!'s Gazette"
+      gazette_disk: "Compute!'s Gazette Disk Edition"
+      gazette_section: "Compute!'s Gazette Special Section"
+      geoworld: "geoWorld"
+      info: "Info"
+      interface: "Commodore Interface"
+      power_play: "Commodore Power/Play"
+      run: "RUN"
+      strictly_cbm: "Strictly Commodore"
+      torpet: "The TORPET"
+      tpug: "TPUG Magazine"
+      transactor: "The Transactor"

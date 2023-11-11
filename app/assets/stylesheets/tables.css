@@ -1,5 +1,28 @@
+.index-table {
+  line-height: 1.5rem;
+  padding-right: 24px;
+  width: 100%;
+}
+
+.index-table tr {
+  display: grid;
+}
+
 .table-striped tbody tr:nth-of-type(odd) {
   background-color: #e2dff0;
+}
+
+.index-table tr.magazine-index-row {
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.index-table th {
+  padding: 8px 8px 8px 8px;
+  text-align: left;
+}
+
+.index-table td {
+  padding: 4px 8px 4px 8px;
 }
 
 td.magazine-name {

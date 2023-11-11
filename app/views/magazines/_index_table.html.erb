@@ -1,0 +1,17 @@
+<div id="index-table">
+  <table class="index-table table-striped">
+    <tr class="magazine-index-row">
+      <th>Name</th>
+      <th>Slug</th>
+      <th>Alpha Guide</th>
+    </tr>
+
+    <% @magazines.each do |magazine| %>
+      <tr class="magazine-index-row">
+        <td><%= magazine.name %></td>      
+        <td><%= magazine.slug %></td>      
+        <td><%= magazine.alpha_guide %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
