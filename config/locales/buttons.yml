@@ -1,0 +1,5 @@
+en:
+  button:
+    search:
+      clear: "Clear Filters"
+      submit: "Search"
