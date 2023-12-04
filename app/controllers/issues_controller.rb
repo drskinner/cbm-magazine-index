@@ -7,7 +7,8 @@ class IssuesController < ApplicationController
 
     @pagy, @issues =
       pagy(
-        Issue.accessible_by(current_ability)
+        Issue
+          .accessible_by(current_ability)
           .eager_load(:magazine)
           .search(params.slice(:by_magazine_id, :by_year))
           .order(sort => direction),

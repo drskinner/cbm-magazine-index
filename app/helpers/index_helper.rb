@@ -7,7 +7,7 @@ module IndexHelper
     last_record = first_record + page_size - 1
     last_record = full_count if last_record > full_count
 
-    raw "Displaying #{first_record}&ndash;#{last_record} of #{full_count} records."
+    "Displaying #{first_record}&ndash;#{last_record} of #{full_count} records."
   end
 
   def svg(icon)
