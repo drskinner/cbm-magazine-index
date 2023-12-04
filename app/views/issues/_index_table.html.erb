@@ -1,0 +1,36 @@
+<div id="index-table">
+
+  <table class="index-table table-striped">
+    <tr class="issue-index-row">
+      <th>Magazine</th>
+      <th>Date</th>
+      <th>Volume</th>
+      <th>Issue Number</th>
+      <th class="action"></th>
+      <%= tag.th class: 'action' if can? :update, Issue %>
+    </tr>
+
+    <% @issues.each do |issue| %>
+      <tr class="issue-index-row">
+        <td><%= issue.magazine %></td>
+        <td><%= issue.date_display %></td>
+        <td><%= "Vol. #{issue.volume}, No. #{issue.number}" unless issue.number.blank? %></td>
+        <td><%= issue.sequence %></td>
+        <td class="action">
+          <%= link_to svg('view'),
+                      issue_path(issue),
+                      title: I18n.t('index_table.view') %>
+        </td>
+        <% if can? :update, Issue %>
+          <%= tag.td class: 'action' do %>
+            <%= link_to svg('edit'),
+                        edit_issue_path(issue),
+                        title: I18n.t('index_table.edit') %>
+          <% end %>
+        <% end %>
+      </tr>
+    <% end %>
+  </table>
+
+  <%#= paginate @issues %>
+</div>

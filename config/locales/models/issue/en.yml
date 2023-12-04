@@ -1,0 +1,31 @@
+en:
+  activerecord:
+    attributes:
+      issue:
+        friendly_name: "Friendly Name"
+        magazine: "Magazine"
+        year: "Year"
+  issue:
+    fieldset:
+      metadata: "Issue Metadata"
+    friendly_name:
+      ahoy: "Issue %{sequence}, %{month_name} %{year}"
+      cbm: "Volume %{volume}, No. %{number}, %{month_name} %{year}"
+      cbm_micro: "Volume %{volume}, No. %{number}, %{month_name} %{year}"
+      cbm_world: "Issue #%{sequence}, %{month_name} %{year}"
+      commander: "Volume %{volume}, No. %{number}, %{month_name} %{year}"
+      compute: "Issue %{sequence}, Volume %{volume}, No. %{number}, %{month_name} %{year}"
+      compute_ii: "%{month_name} %{year}"
+      diehard: "Volume %{volume}, No. %{number}, %{month_name} %{year}"
+      gazette: "Issue %{sequence}, Volume %{volume}, No. %{number}, %{month_name} %{year}"
+      gazette_disk: "Issue No. %{sequence}, %{month_name} %{year}"
+      gazette_section: "Volume %{volume}, No. %{number}, %{month_name} %{year}"
+      geoworld: "Issue No. %{sequence}, %{month_name} %{year}"
+      info: "Issue No. %{sequence}, %{month_name} %{year}"
+      interface: "%{month_name} %{year}"
+      power_play: "Volume %{volume}, No. %{number}, %{month_name} %{year}"
+      run: "Volume %{volume}, No. %{number}, %{month_name} %{year}"
+      strictly_cbm: "Volume %{volume}, No. %{number}, %{month_name} %{year}"
+      torpet: "Issue #%{sequence}, %{month_name} %{year}"
+      tpug: "Issue #%{sequence}, %{month_name} %{year}"
+      transactor: "Volume %{volume}, No. %{number}, %{month_name} %{year}"

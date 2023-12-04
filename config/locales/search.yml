@@ -1,4 +1,6 @@
 en:
   search:
+    by_magazine_id: "Magazine"
+    by_year: "Publication Year"
     name_contains: "Name Contains"
     title: "Search Options"

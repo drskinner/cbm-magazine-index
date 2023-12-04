@@ -1,0 +1,85 @@
+.input-form {
+  margin-top: 20px;
+}
+
+.input-form fieldset {
+  background: #e2dff0;
+  border: none;
+  padding: 20px 0px 5px 0px;
+  margin-bottom: 12px;
+}
+
+.input-form fieldset legend {
+  background: linear-gradient(#2e2c9b, #1e1c8b);
+  width: 100%;
+  font-size: 1.75rem;
+  padding: 5px 0px 5px 10px;
+  margin-bottom: 5px;
+  color: white;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #e6e6e6 #d4d4d4 #cdcdcd #d4d4d4;
+}
+
+.input-form label {
+  color: #282828;
+  font-size: 1.25em;
+  font-weight: bold;
+  text-align: right;
+  display: inline-block;
+  width: 15%;
+}
+
+.input-form label.text {
+  vertical-align: top;
+}
+
+.input-form label.required abbr {
+  color: #cc0000;
+  border-bottom: none;
+  text-decoration: none;
+}
+
+.input-form span.error {
+  color: #cc0000;
+  padding-left: 10px;
+}
+
+.input-form div.input {
+  margin: 12px 0 12px 0;
+}
+
+.input-form input,
+.input-form select {
+  font-size: 1.25rem;
+  height: 1.75rem;  
+  margin: 0 0 0 12px;
+}
+
+.input-form input.string {
+  min-width: 75%;
+}
+
+.input-form div.show-input {
+  display: inline-block;
+  margin: 0 0 0 12px;    
+}
+
+.input-form div.validation-errors {
+  margin: 0 2px 20px 2px;
+}
+
+.input-form span.select2,
+.input-form textarea {
+  margin-left: 12px;
+  min-width: 75%;
+}
+
+span.hint {
+  margin-left: 200px;
+  font-style: italic;
+}
+
+div.show span.hint {
+  display: block;
+}
