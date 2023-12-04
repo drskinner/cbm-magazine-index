@@ -20,6 +20,15 @@
         <% end %>
       </div>
       <div class="header-right">
+        <% if user_signed_in? %>
+          <nav class="nav-menu" id="admin-nav">
+            <%= link_to 'Issues', issues_path, class: 'navbar-link' %>|
+            <%= link_to 'Magazines', magazines_path, class: 'navbar-link' %>|
+            <div class="logout-link">
+              <%= link_to 'Sign Out', destroy_user_session_path, data: { turbo_method: :delete }, class: 'navbar-link' %>
+            </div>
+        </nav>
+        <% end %>
         <nav class="nav-menu" id="public-nav">
           <%= link_to 'Status', public_status_path %>|
           <%= link_to 'About', public_about_path %>
@@ -32,16 +41,6 @@
     <div class="layout-bar bar-yellow"></div>
     <div class="layout-bar bar-green"></div>
     <div class="layout-bar bar-blue"></div>
-
-    <% if user_signed_in? %>
-      <nav id="top-nav">
-        <%= link_to 'Issues', issues_path, class: 'navbar-link' %>&nbsp;|
-        <%= link_to 'Magazines', magazines_path, class: 'navbar-link' %>
-        <div class="logout-link">
-          <%= link_to 'Sign Out', destroy_user_session_path, data: { turbo_method: :delete }, class: 'navbar-link' %>
-        </div>
-      </nav>
-    <% end %>
 
     <section id="title-bar">
       <div id="title-content">

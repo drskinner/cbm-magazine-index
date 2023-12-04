@@ -5,11 +5,14 @@ class IssuesController < ApplicationController
     sort = params[:sort] || :id
     direction = params[:direction] || :asc
 
-    @issues =
-      Issue.accessible_by(current_ability)
-        .eager_load(:magazine)
-        .search(params.slice(:by_magazine_id, :by_year))
-        .order(sort => direction)
+    @pagy, @issues =
+      pagy(
+        Issue.accessible_by(current_ability)
+          .eager_load(:magazine)
+          .search(params.slice(:by_magazine_id, :by_year))
+          .order(sort => direction),
+        items: 15
+      )
   end
 
   def show

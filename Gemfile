@@ -47,6 +47,7 @@ gem "bootsnap", require: false
 # CBM Magazine Index additions
 gem 'cancancan'
 gem 'devise'
+gem 'pagy', '~> 6.2'
 gem 'simple_form'
 
 group :development, :test do
