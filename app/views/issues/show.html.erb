@@ -1,0 +1,7 @@
+<% content_for :title do %>
+  <%= I18n.t('page.action_title.show', record: @issue.to_s) %>
+  <%= link_to svg('edit'), edit_issue_path(@issue), title: I18n.t('index_table.edit'), class: 'icon' %>
+  <%= link_to svg('new'), new_issue_path, title: I18n.t('index_table.create'), class: 'icon' %>  
+<% end %>
+
+<%= render 'form' %>

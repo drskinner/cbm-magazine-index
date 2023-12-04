@@ -115,3 +115,12 @@ h1#page-title {
   display: grid;
   grid-template-columns: auto 325px;
 }
+
+a.icon {
+  color: #0000ee;
+}
+
+a.icon svg {
+  max-height: 24px;
+  fill: currentColor;
+}

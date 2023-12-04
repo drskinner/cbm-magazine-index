@@ -1,0 +1,35 @@
+<%= simple_form_for @issue, html: { class: 'input-form' } do |f| %>
+  <div class="validation-errors">
+    <%= render partial: 'alerts/validation_errors', locals: { f: f } %>
+  </div>
+
+  <div class="input-fields">
+    <fieldset>
+      <legend><%= I18n.t('issue.fieldset.metadata') %></legend>
+      <% if action_name == 'show' %>
+        <%= f.input :friendly_name, as: :show %>
+      <% end %>
+      <%= f.association :magazine,
+                        as: :select, 
+                        collection: Magazine.collection,
+                        required: true,
+                        prompt: I18n.t('select.magazine') %>
+      <%= f.input :year,
+                  as: :select,
+                  collection: Rails.configuration.first_year..Rails.configuration.last_year,
+                  required: true,
+                  prompt: I18n.t('select.year') %>
+      <%= f.input :month,
+                  as: :select,
+                  collection: Issue.month_collection,
+                  required: false,
+                  prompt: I18n.t('select.month') %>
+      <%= f.input :volume, as: :integer %>
+      <%= f.input :number, as: :integer %>
+    </fieldset>
+  </div>
+  
+  <div>
+    <%= f.button :submit unless action_name == 'show' %>
+  </div>
+<% end %>
