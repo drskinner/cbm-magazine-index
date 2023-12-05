@@ -12,6 +12,10 @@
   background-color: #e2dff0;
 }
 
+.index-table tr.article-index-row {
+  grid-template-columns: 2fr 1fr 1fr 1fr 2.5rem 2.5rem;
+}
+
 .index-table tr.issue-index-row {
   grid-template-columns: 2fr 1fr 1fr 1fr 2.5rem 2.5rem;
 }
