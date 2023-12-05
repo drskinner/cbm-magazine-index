@@ -12,8 +12,7 @@ without context, cute sidebars, puzzles, contests, jokes, and trivia. I did make
 <%#= link_to 'Commodore Trivia',
             public_search_path(by_magazine: Magazine.find_by(name: 'Commodore World').id,
                                author_contains: 'Brain',
-                               'has_all_tags[]': "#{Tag.find_by(name: 'trivia').id}"),
-                               data: { turbolinks: false } %>,
+                               'has_all_tags[]': "#{Tag.find_by(name: 'trivia').id}") %>,
 published in <i>Commodore World</i>, for three reasons: (1) Jim describes his trivia questions as his "gift to the community at large"
 and I think that deserves some recognition, (2) the trivia represents a rare bit of cross-talk between Usenet and a print publication, and
 (3) some of the discussions of trivia answers are detailed enough to be articles in their own right.</p>
