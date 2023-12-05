@@ -2,10 +2,10 @@
   <%= I18n.t('page.action_title.index', model: 'Issues') %>
   <%= link_to svg('new'), new_issue_path, title: I18n.t('index_table.create'), class: 'icon' %>
 <% end %>
-  
+
 <div class="index-page">
   <div class="pagination-info">
-    <%#= pagination_info(page: params[:page], page_count: @issues.count, full_count: @full_count) %>
+    <%== pagination_info(page: params[:page], page_size: @pagy.items, full_count: @pagy.count) %>
   </div>
 
   <div></div>

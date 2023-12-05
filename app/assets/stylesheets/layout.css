@@ -36,6 +36,23 @@ header {
   height: 95%;
 }
 
+#admin-nav {
+  font-size: 200%;
+  color: #000080;
+  margin: 20px 0 10px 0;
+  float: left;
+}
+
+#admin-nav a {
+  color: #5c4ea5;
+  text-decoration: none;
+  margin: 0 10px 0 10px;
+}
+
+#admin-nav a:hover {
+  color: #cc0000;
+}
+
 .layout-bar {
   height: 6px;
   margin: 3px 0 3px 0;
@@ -59,25 +76,6 @@ header {
 
 .bar-blue {
   background-color: #00bfff;
-}
-
-#top-nav {
-  font-size: 150%;
-  color: #2e2c9b;
-  margin: 20px 0 10px 0;
-}
-
-#top-nav .navbar-link {
-  color: #5c4ea5;
-  text-decoration: none;
-}
-
-#top-nav .navbar-link:hover {
-  color: #cc0000;
-}
-
-#top-nav .logout-link {
-  float: right;
 }
 
 footer {
@@ -109,6 +107,8 @@ span.admin-login a {
 
 h1#page-title {
   font-size: 2rem;
+  margin: .5rem 0 .5rem 0;
+
 }
 
 .index-page {
