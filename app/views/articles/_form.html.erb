@@ -1,0 +1,69 @@
+<%= simple_form_for @article, html: { class: 'input-form' } do |f| %>
+  <div class="validation-errors">
+    <%= render partial: 'alerts/validation_errors', locals: { f: f } %>
+  </div>
+
+  <div class="input-fields">
+    <fieldset>
+      <legend><%= I18n.t('article.fieldset.metadata') %></legend>
+      <%= f.input :title, as: :string %>
+      <%= f.input :author, as: :string %>
+      <%= f.input :magazine_id,
+                  as: :select,
+                  collection: Magazine.collection,
+                  required: true,
+                  input_html: { onChange: "foo();" },
+                  prompt: I18n.t('select.magazine') %>
+                  <div id="results"></div>
+      <%= f.association :issue,
+                  as: :select,
+                  collection: Issue.all,
+                  required: true,
+                  prompt: I18n.t('select.issue') %>
+      <%= f.input :page, as: :integer, required: true %>
+      <%= f.input :archive_page, as: :string, required: false %>
+      <%= f.input :blurb,
+                  as: :text,
+                  input_html: { rows: 4 },
+                  hint: "The magazine's internal description of the article." %>
+      <%= f.input :description,
+                  as: :text,
+                  input_html: { rows: 4 },
+                  hint: "Include useful keywords for searching." %>
+    </fieldset>
+    <fieldset>
+      <legend><%= I18n.t('article.fieldset.classifications') %></legend>
+      <%= f.input :regular_feature,
+                  as: :radio_buttons,
+                  label: I18n.t('activerecord.attributes.article.regular_feature') %>
+      <%= f.input :classification_id,
+                  as: :select,
+                  collection: Classification.all,
+                  label: I18n.t('activerecord.attributes.article.classification'),
+                  required: true,
+                  prompt: I18n.t('select.article_type') %>
+      <%= f.input :language_id,
+                  as: :select,
+                  collection: Language.collection,
+                  required: false,
+                  prompt: I18n.t('select.language') %>
+      <%= f.input :machine_ids,
+                  as: :select,
+                  collection: Machine.all,
+                  required: false,
+                  input_html: { multiple: true, style: 'height: 6rem;' } %>
+      <%= f.input :tag_ids,
+                  as: :select,
+                  collection: Tag.collection,
+                  required: false,
+                  input_html: { multiple: true, style: 'height: 9rem;' },
+                  hint: 'Curated subject tags to aid advanced searching.' %>
+    </fieldset>
+  </div>
+  
+  <div>
+    <%= f.button :submit unless action_name == 'show' %>
+  </div>
+
+  <%#= render partial: 'dynamic_issues', formats: [:js], locals: { f: f } %>
+<% end %>

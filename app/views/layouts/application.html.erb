@@ -22,6 +22,7 @@
       <div class="header-right">
         <% if user_signed_in? %>
           <nav class="nav-menu" id="admin-nav">
+            <%= link_to 'Articles', articles_path, class: 'navbar-link' %>|
             <%= link_to 'Issues', issues_path, class: 'navbar-link' %>|
             <%= link_to 'Magazines', magazines_path, class: 'navbar-link' %>|
             <div class="logout-link">

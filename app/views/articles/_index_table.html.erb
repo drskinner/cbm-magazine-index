@@ -1,0 +1,35 @@
+<div id="index-table">
+
+  <table class="index-table table-striped">
+    <tr class="article-index-row">
+      <th>Title</th>
+      <th>Author</th>
+      <th>Issue</th>
+      <th>Page</th>
+      <th class="action"></th>
+      <%= tag.th class: 'action' if can? :update, Article %>
+    </tr>
+
+    <% @articles.each do |article| %>
+      <tr class="article-index-row">
+        <td><%= article.title %></td>
+        <td><%= article.author %></td>
+        <td><%= article.issue %></td>
+        <td><%= article.page %></td>
+        <td class="action">
+          <%= link_to svg('view'),
+                      article_path(article),
+                      title: I18n.t('index_table.view') %>
+        </td>
+        <% if can? :update, Article %>
+          <%= tag.td class: 'action' do %>
+            <%= link_to svg('edit'),
+                        edit_article_path(article) %>
+          <% end %>
+        <% end %>
+      </tr>
+    <% end %>
+  </table>
+
+  <%== pagy_nav @pagy %>
+</div>

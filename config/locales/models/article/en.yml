@@ -1,0 +1,19 @@
+en:
+  activerecord:
+    attributes:
+      article:
+        archive_page: "Archive Page"
+        author: "Author"
+        classification: "Article Type"
+        description: "Description"
+        issue: "Issue"
+        magazine: "Magazine"
+        machine_ids: "Machines"
+        page: "Page"
+        regular_feature: "Regular Feature"
+        tag_ids: "Tags"
+        title: "Title"
+  article:
+    fieldset:
+      classifications: "Article Classifications"
+      metadata: "Article Metadata"
