@@ -39,7 +39,7 @@ section.status-table {
   margin: 0 100px 0 100px;
 }
 
-.results-page2 {
+.results-page {
   display: grid;
   grid-template-columns: 325px auto;
 }
