@@ -28,6 +28,10 @@ class Article < ApplicationRecord
     super(machine_ids.reject(&:blank?))
   end
 
+  def classification_id_display
+    classification.name
+  end
+
   def language_id_display
     language&.name
   end

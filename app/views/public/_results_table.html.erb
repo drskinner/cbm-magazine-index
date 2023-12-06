@@ -3,7 +3,7 @@
     <% @articles.each do |article| %>
       <div class="results-row">
         <p>
-          <%= link_to article.title_for_results, "/public/article/#{article.id}", remote: true %>
+          <%= link_to article.title_for_results, "/public/article/#{article.id}" %>
           &ndash;
           <%= article.author_for_results %>
         </p>
