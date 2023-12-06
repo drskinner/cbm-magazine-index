@@ -1,0 +1,17 @@
+<div id="index-table">
+  <section class="results-table">
+    <% @articles.each do |article| %>
+      <div class="results-row">
+        <p>
+          <%= link_to article.title_for_results, "/public/article/#{article.id}" %>
+          &ndash;
+          <%= article.author_for_results %>
+        </p>
+        <p><%= article.issue_for_results %>, p. <%= article.page %></p>
+        <p><%= article.description_for_results %></p>
+      </div>
+    <% end %>
+
+    <%== pagy_nav @pagy %>
+  </section>
+</div>
