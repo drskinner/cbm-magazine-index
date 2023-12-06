@@ -1,1 +1,117 @@
-<h1>Hello, world!</h1>
+<div class="public-page-title">
+  <%= image_tag('search.png', alt: 'About this project', class: 'public-page-title-png') %>
+</div>
+
+<section class="wall-of-text">
+  <p>The main search is still a work in progress. Consider this page a prototype. :)</p>
+  <p>You can try a few search options in the form below or try one of these searches to get started:</p>
+</section>
+
+<section class="wall-of-text sample-search-links">
+  <div class="sample-search-column">
+    <ul>
+      <li>
+        <%= link_to 'Articles by Jim Butterfield',
+              public_search_path(author_contains: 'butterfield'),
+              data: { turbolinks: false } %>
+      </li>
+      <li>
+        <%= link_to 'Articles about COMAL',
+              public_search_path(by_language: Language.find_by(name: 'COMAL').id),
+              data: { turbolinks: false } %>
+      </li>
+      <li>
+        <%= link_to 'Interviews',
+              public_search_path('has_all_tags[]': "#{Tag.find_by(name: 'interviews').id}"),
+              data: { turbolinks: false } %>
+      </li>
+      <li>
+        <%= link_to 'Type-ins with machine-language source code',
+              public_search_path(by_article_type: Classification.find_by(name: 'Type-In').id,
+                                 by_language: Language.find_by(name: 'ML').id,
+                                'has_all_tags[]': "#{Tag.find_by(name: 'source code').id}"),
+              data: { turbolinks: false } %>
+      </li>
+    </ul>
+  </div>
+  <div class="sample-search-column">
+    <ul>
+      <li>
+        <%= link_to 'Game reviews from 1988',
+              public_search_path(by_article_type: Classification.find_by(name: 'Review - Software').id,
+                                 by_year: 1988,
+                                'has_all_tags[]': "#{Tag.find_by(name: 'games').id}"),
+              data: { turbolinks: false } %>
+      </li>
+      <li>
+        <%= link_to 'News about Commodore\'s bankruptcy',
+              public_search_path('has_all_tags[]': "#{Tag.find_by(name: 'bankruptcy').id}"),
+              data: { turbolinks: false } %>
+      </li>
+      <li>
+        <%= link_to 'Articles that mention Q-Link',
+              public_search_path(has_text: 'q-link'),
+              data: { turbolinks: false } %>
+      </li>
+      <li>
+        <%= link_to 'Reviews of hardware from Creative Micro Designs (CMD)',
+              public_search_path(by_article_type: Classification.find_by(name: 'Review - Hardware').id,
+                                'has_all_tags[]': "#{Tag.find_by(name: 'CMD').id}"),
+              data: { turbolinks: false } %>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section class="wall-of-text">
+<%= form_tag public_search_path, method: 'get', class: 'input-form welcome-form' do %>
+  <fieldset class="welcome">
+    <legend>Search</legend>
+    <div class="search-field">
+      <label>Article Description Contains</label>
+      <%= text_field_tag :has_text,
+                        params['has_text'],
+                        placeholder: 'Enter a string (case-insensitive search)',
+                        class: 'search-text' %>
+    </div>
+    <div class="search-field">
+      <label><%= I18n.t('search.by_magazine_id') %></label>
+      <%= select_tag :by_magazine_id,
+                     options_for_select(Magazine.collection, params[:by_magazine_id]),
+                     prompt: I18n.t('select.magazine'),
+                     class: 'search-select' %>
+    </div>
+    <div class="search-field">
+      <label><%= I18n.t('search.author_contains') %></label>
+      <%= text_field_tag :author_contains,
+                        params['author_contains'],
+                        placeholder: 'Enter a string (case-insensitive search)',
+                        class: 'search-text' %>
+    </div>
+    <div class="search-field">
+      <label><%= I18n.t('search.by_year') %></label>
+      <%= select_tag :by_year,
+                     options_for_select((Rails.configuration.first_year..Rails.configuration.last_year), params[:by_year]),
+                     prompt: I18n.t('select.year'),
+                     class: 'search-select' %>
+    </div>
+    <div class="search-field">
+      <label><%= I18n.t('search.by_article_type') %></label>
+      <%= select_tag :by_article_type,
+                     options_for_select(Classification.collection, params[:by_article_type]),
+                     prompt: I18n.t('select.article_type'),
+                     class: 'search-select' %>
+    </div>
+    <div class="search-field">
+      <label><%= I18n.t('search.by_language') %></label>
+      <%= select_tag :by_language,
+                     options_for_select(Language.collection, params[:by_language]),
+                     prompt: I18n.t('select.language'),
+                     class: 'search-select' %>
+    </div>
+    <div class="search-buttons">
+      <%= submit_tag I18n.t('button.search.submit'), name: nil, class: 'btn btn-default' %>
+      <%= link_to I18n.t('button.search.clear'), public_welcome_path, class: 'btn btn-clear', data: { turbolinks: false }  %>
+    </div>
+  </fieldset>
+<% end %>

@@ -9,7 +9,7 @@
 <em>reviews</em>, <em>type-ins</em>, and <em>articles</em>. What constitutes an article in Phase I is a bit arbitrary but it may be easier
 to describe what <em>isn't</em> making the initial cut. I'm omitting editorials, reader letters, press releases, lists of products or news bites
 without context, cute sidebars, puzzles, contests, jokes, and trivia. I did make an exception for Jim Brain's 
-<%#= link_to 'Commodore Trivia',
+<%= link_to 'Commodore Trivia',
             public_search_path(by_magazine: Magazine.find_by(name: 'Commodore World').id,
                                author_contains: 'Brain',
                                'has_all_tags[]': "#{Tag.find_by(name: 'trivia').id}") %>,
