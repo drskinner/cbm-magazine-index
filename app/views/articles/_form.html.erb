@@ -48,21 +48,16 @@
                   required: false,
                   prompt: I18n.t('select.language') %>
       <%= f.input :machine_ids,
-                  as: :check_boxes,
+                  as: :select,
                   collection: Machine.all,
                   required: false,
-                  input_html: { multiple: true } %>
+                  input_html: { multiple: true, style: 'height: 6rem;' } %>
       <%= f.input :tag_ids,
-                  as: :check_boxes,
+                  as: :select,
                   collection: Tag.collection,
                   required: false,
+                  input_html: { multiple: true, style: 'height: 9rem;' },
                   hint: 'Curated subject tags to aid advanced searching.' %>
-                  <select multiple="true" title="Filter results by category">
-                  <optgroup label="New">
-                    <option value="last 30 days">Last 30 Days</option>
-                    <option value="last 6 months">Last 6 Months</option>
-                  </optgroup>
-                </select>
     </fieldset>
   </div>
   
