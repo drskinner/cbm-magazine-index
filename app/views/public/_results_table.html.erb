@@ -3,7 +3,7 @@
     <% @articles.each do |article| %>
       <div class="results-row">
         <p>
-          <%= link_to article.title_for_results, "/public/article/#{article.id}" %>
+          <%= link_to article.title_for_results, "/public/article/#{article.id}", data: { turbo_frame: 'modal' }, onclick: 'showModal();' %>
           &ndash;
           <%= article.author_for_results %>
         </p>
@@ -14,4 +14,11 @@
 
     <%== pagy_nav @pagy %>
   </section>
+
+  <%# A bit hacky, but I haven't gotten Stimulus to behave yet. %>
+  <script>
+    function showModal() {
+      document.getElementById('modal').style.display = 'block';
+    }
+  </script>
 </div>

@@ -34,4 +34,12 @@ class PublicController < ApplicationController
       format.json { render json: @article_count, layout: false }
     end
   end
+
+  def article
+    @article = Article.find(params[:id])
+    respond_to do |format|
+      format.html { render layout: true }
+      format.js { render layout: false }
+    end
+  end
 end

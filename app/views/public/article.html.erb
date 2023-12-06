@@ -1,0 +1,52 @@
+<%= turbo_frame_tag 'modal', class: 'article-details' do %>
+  <span class="close" onclick="closeModal();">&times;</span>
+  <div id="modal-content">
+    <div class="article-left">
+      <%= image_tag cover_image_url(@article.issue), class: 'cover-image' %>
+
+      <ul style="list-style-type: none; padding: 0;">
+        <li><a href="#">About this issue</a><br>(Coming Soon)</li>
+        <li>&nbsp;</li>
+        <li><b>Archive.org Links:</b></i>
+        <li>
+          <% if @article.archive_page %>
+            <%= link_to 'View article', archive_view_article_link(@article.issue, @article.archive_page), target: '_blank' %>
+          <% else %>
+            <%= link_to 'View issue', archive_view_issue_link(@article.issue), target: '_blank' %>
+          <% end %>      
+        </li>
+        <li>
+          <%= link_to 'Download issue', archive_download_link(@article.issue), target: '_blank' %>
+        </li>
+        <li>
+          <%= link_to 'OCR full text', archive_ocr_link(@article.issue), target: '_blank' %>
+        </li>
+        <li>
+          <%= link_to 'Single-page JP2s', archive_jpeg_link(@article.issue), target: '_blank' %>
+        </li>
+      </ul>
+    </div>
+
+    <div class="article-right">
+      <h1><%= @article.title %></h1>
+      <p><%= @article.author %></p>
+      <p><%= @article.issue_for_results %>, p. <%= @article.page %></p>
+      <p><b>Type:</b> <%= @article.classification_id_display %></p>
+      <% unless @article.machine_ids_display.blank? %>
+        <p><b>Machine(s):</b> <%= @article.machine_ids_display %></p>
+      <% end %>
+      <% unless @article.language_id_display.blank? %>
+        <p><b>Language:</b> <%= @article.language_id_display %></p>
+      <% end %>
+      <p><i><%= @article.blurb %></i></p>
+      <p><%= raw @article.description %></p>
+      <p><b>Tags:</b> <%= @article.tag_ids_display %></p>
+    </div>
+  </div>
+
+  <script>
+    function closeModal() {
+      document.getElementById('modal').style.display = 'none';
+    }
+  </script>
+<% end %>

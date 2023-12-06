@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   get 'public/status'
   get 'public/welcome'
 
+  get 'public/article/:id', to: 'public#article'
+
   resources :articles
   resources :issues
   resources :magazines
