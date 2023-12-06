@@ -1,5 +1,9 @@
 en:
   select:
+    article_type: "-- Select Article Type --"
+    issue: "-- Select Issue --"
+    language: "-- Select Language --"
+    machine: "-- Select Machine --"
     magazine: "-- Select Magazine --"
     year: "-- Select Year --"
   simple_form:

@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
   get 'public/about'
+  get 'public/search'
   get 'public/status'
   get 'public/welcome'
 

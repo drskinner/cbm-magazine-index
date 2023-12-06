@@ -1,7 +1,13 @@
 en:
   search:
+    author_contains: "Author's Name Contains"
+    by_article_type: "Article Type"
+    by_language: "Language"
+    by_magazine: "Magazine"
     by_magazine_id: "Magazine"
     by_sequence: "By Sequence/Issue Number"
     by_year: "Publication Year"
+    for_machine: "Machine"
+    has_text: "Contains String"
     name_contains: "Name Contains"
     title: "Search Options"

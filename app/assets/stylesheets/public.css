@@ -38,3 +38,38 @@ section.status-table {
 .wall-of-text {
   margin: 0 100px 0 100px;
 }
+
+.results-page2 {
+  display: grid;
+  grid-template-columns: 325px auto;
+}
+
+.results-pagination-info {
+  text-align: right;
+  font-size: 85%;
+  padding-right: 0;
+  min-height: 20px;
+}
+
+.results-table {
+  line-height: 1.5rem;
+  margin-left: 24px;
+  width: 100%;
+}
+
+.results-table div:nth-of-type(odd) {
+  background-color: #e2dff0;
+}
+
+.results-row {
+  padding: 8px 12px 8px 12px;
+  margin-right: 24px;
+}
+
+.results-row p {
+  margin: 0;
+}
+
+.results-row a:hover {
+  color: #ee0000;
+}
