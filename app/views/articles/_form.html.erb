@@ -12,7 +12,7 @@
                   as: :select,
                   collection: Magazine.collection,
                   required: true,
-                  input_html: { onChange: "foo();" },
+                  input_html: { onChange: "narrowIssueSelection();" },
                   prompt: I18n.t('select.magazine') %>
                   <div id="results"></div>
       <%= f.association :issue,
@@ -65,5 +65,5 @@
     <%= f.button :submit unless action_name == 'show' %>
   </div>
 
-  <%#= render partial: 'dynamic_issues', formats: [:js], locals: { f: f } %>
+  <%= render partial: 'dynamic_issues', formats: [:js], locals: { f: f } %>
 <% end %>
