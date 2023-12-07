@@ -1,0 +1,9 @@
+heroku pg:backups:capture --app cbm-magazine-index
+rm latest.dump
+heroku pg:backups:download -a cbm-magazine-index
+rails db:environment:set RAILS_ENV=development
+rails db:drop
+rails db:create
+pg_restore --verbose --clean --no-acl --no-owner -h localhost -d cbm_magazine_index_development latest.dump
+
+# it may no longer be necessary to drop and create the DB; look into this
