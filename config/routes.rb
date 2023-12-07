@@ -12,6 +12,9 @@ Rails.application.routes.draw do
 
   get 'public/article/:id', to: 'public#article'
 
+  get 'api/bibliography'
+  get 'api/status_counts'
+
   resources :articles
   resources :issues
   resources :magazines
