@@ -23,6 +23,10 @@ class PublicController < ApplicationController
                .order(sort => direction),
         items: 12
       )
+
+    if !current_user && params[:source] == 'Search' && !params[:page]
+      SearchLog.write_log(params, @pagy)
+    end
   end
 
   def status

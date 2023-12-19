@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_02_25_200510) do
+ActiveRecord::Schema[7.1].define(version: 2023_12_19_000231) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -104,6 +104,13 @@ ActiveRecord::Schema[7.1].define(version: 2023_02_25_200510) do
   create_table "roles", force: :cascade do |t|
     t.string "name", null: false
     t.integer "position", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "search_logs", force: :cascade do |t|
+    t.json "search_terms"
+    t.integer "result_count"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
