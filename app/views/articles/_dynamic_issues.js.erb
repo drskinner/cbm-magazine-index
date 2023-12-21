@@ -5,7 +5,7 @@ function narrowIssueSelection() {
   let allIssues = [];
 
   <% Magazine.ids.each do |m| %>
-    <% Issue.by_magazine_id(m).each do |i| %>
+    <% Issue.by_magazine_id(m).order(sequence: :asc).each do |i| %>
       allIssues.push({magazineId: <%= m %>, issueId: <%= i.id %>, issueName: "<%= raw i.to_s %>"});
     <% end %>
   <% end %>
