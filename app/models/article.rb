@@ -33,6 +33,14 @@ class Article < ApplicationRecord
     classification.name
   end
 
+  def description_display
+    sanitize description
+  end
+
+  def issue_id_display
+    issue_for_results
+  end
+
   def language_id_display
     language&.name
   end
