@@ -10,9 +10,10 @@ module Api
           a.page,
           a.archive_page,
           i.id AS issue_id,
+          i.month AS month,
           TO_CHAR(
             TO_DATE (i.month::text, 'MM'), 'Month'
-          ) AS month,
+          ) AS month_name,
           i.year,
           i.sequence,
           m.name AS magazine_name,
