@@ -17,7 +17,8 @@ module Api
           i.year,
           i.sequence,
           m.name AS magazine_name,
-          m.slug AS magazine_slug
+          m.slug AS magazine_slug,
+          m.archive_suffix AS archive_suffix
         FROM
           articles a
         INNER JOIN
