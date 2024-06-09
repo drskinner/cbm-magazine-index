@@ -26,12 +26,18 @@ module Api
         INNER JOIN
           magazines m ON (m.id = i.magazine_id)
         WHERE
-          a.author ILIKE '%#{author}%'
+          a.author = #{sanitize_param(author)}
         ORDER BY
           i.year ASC, i.month ASC;
       ENDSQL
 
       result = ActiveRecord::Base.connection.execute(sql)
+    end
+
+    private
+
+    def self.sanitize_param(param)
+      ActiveRecord::Base.connection.quote(param)
     end
   end
 end
