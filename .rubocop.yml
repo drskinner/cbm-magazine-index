@@ -1,2 +1,10 @@
-Documentation:
+require:
+  - rubocop-rails
+AllCops:
+  NewCops: enable
+Style/Documentation:
+  Enabled: false
+Style/FloatDivision:
+  EnforcedStyle: left_coerce
+Style/FrozenStringLiteralComment:
   Enabled: false

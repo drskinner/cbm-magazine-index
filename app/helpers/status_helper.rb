@@ -15,11 +15,11 @@ module StatusHelper
     if issues_read(magazine).zero?
       '0.00'
     else
-      '%.2f' % (issues_read(magazine).to_f / issues_registered(magazine).to_f * 100)
+      format('%.2f', issues_read(magazine).to_f / issues_registered(magazine) * 100)
     end
   end
 
   def overall_percent_complete
-    '%.2f' % (Issue.joins(:articles).uniq&.count.to_f / Issue.all.count.to_f * 100)
+    format('%.2f', Issue.joins(:articles).uniq&.count.to_f / Issue.count * 100)
   end
 end

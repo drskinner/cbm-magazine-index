@@ -10,12 +10,15 @@ class Article < ApplicationRecord
   scope :by_article_type, ->(id) { where(classification_id: id) }
   scope :by_language, ->(id) { where(language_id: id) }
   scope :by_magazine_id, ->(id) { joins(:issue).where(issue: { magazine_id: id }) }
-  scope :by_sequence, ->(sequence) { joins(:issue).where(issue: { sequence: sequence }) }
-  scope :by_year, ->(year) { joins(:issue).where(issue: { year: year }) }
+  scope :by_sequence, ->(sequence) { joins(:issue).where(issue: { sequence: }) }
+  scope :by_year, ->(year) { joins(:issue).where(issue: { year: }) }
   scope :for_machine, ->(id) { where('machine_ids && ARRAY[?]', id.to_i) }
   # scope :for_machines, ->(ids) { where('machine_ids && ARRAY[?]', ids.map(&:to_i)) }
   scope :has_all_tags, ->(ids) { where('tag_ids @> ARRAY[?]', ids.map(&:to_i)) }
-  scope :has_text, ->(text) { where('description ILIKE ? OR blurb ILIKE ? OR title ILIKE ?', "%#{text}%", "%#{text}%", "%#{text}%") }
+  scope :has_text, lambda { |text|
+    pattern = "%#{text}%"
+    where('description ILIKE :pattern OR blurb ILIKE :pattern OR title ILIKE :pattern', pattern:)
+  }
 
   attr_accessor :magazine_id
 

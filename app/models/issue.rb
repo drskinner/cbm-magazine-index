@@ -7,10 +7,10 @@ class Issue < ApplicationRecord
   validates_presence_of :year
 
   scope :by_magazine_id, ->(id) { where(magazine_id: id) }
-  scope :by_year, ->(year) { where(year: year) }
+  scope :by_year, ->(year) { where(year:) }
 
   def to_s
-    "#{magazine.to_s} #{month_display} #{year} (#{sequence})"
+    "#{magazine} #{month_display} #{year} (#{sequence})"
   end
 
   def date_display
@@ -36,11 +36,11 @@ class Issue < ApplicationRecord
 
     I18n.t(
       "issue.friendly_name.#{magazine.slug}",
-      volume: volume,
-      number: number,
-      sequence: sequence,
+      volume:,
+      number:,
+      sequence:,
       month_name: month.present? ? Date::MONTHNAMES[month] : '',
-      year: year
+      year:
     ).squeeze(' ')
   end
 end

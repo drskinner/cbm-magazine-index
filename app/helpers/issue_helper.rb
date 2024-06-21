@@ -10,14 +10,14 @@ module IssueHelper
   def archive_slug(issue)
     # useless local variables for readability:
     my_slug = issue.magazine.slug
-    my_sequence = issue.special_slug || ('%02i' % issue.sequence)
-    my_month = issue.month.blank? ? '' : ('%02i' % issue.month)
+    my_sequence = issue.special_slug || format('%02i', issue.sequence)
+    my_month = issue.month.blank? ? '' : format('%02i', issue.month)
 
     "#{issue.year}/#{my_slug}-#{my_sequence}-#{issue.year}#{my_month}"
   end
 
   def article_page(page)
-    "page/#{page}/mode/2-up"
+    "page/#{page}/mode/2up"
   end
 
   def archive_download_link(issue)
@@ -41,12 +41,12 @@ module IssueHelper
   end
 
   def cover_image_url(issue)
-    return "covers/blank.jpg" if issue.blank?
+    return 'covers/blank.jpg' if issue.blank?
 
     if issue.special_slug
       "covers/#{issue.magazine.slug}/#{issue.magazine.slug}-#{issue.special_slug}.jpg"
     else
-      "covers/#{issue.magazine.slug}/#{issue.magazine.slug}-#{'%02i' % issue.sequence}.jpg"
+      "covers/#{issue.magazine.slug}/#{issue.magazine.slug}-#{format('%02i', issue.sequence)}.jpg"
     end
   end
 end

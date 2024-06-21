@@ -10,5 +10,5 @@ class User < ApplicationRecord
 
   def set_default_role
     self.role = Role.find_by(name: 'guest') if new_record?
-  end  
+  end
 end
