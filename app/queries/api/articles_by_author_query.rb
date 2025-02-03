@@ -28,7 +28,7 @@ module Api
         WHERE
           a.author = #{sanitize_param(author)}
         ORDER BY
-          i.year ASC, i.month ASC;
+          i.year ASC, i.month ASC, a.page ASC;
       ENDSQL
 
       result = ActiveRecord::Base.connection.execute(sql)
