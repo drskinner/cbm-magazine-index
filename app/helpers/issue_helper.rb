@@ -17,7 +17,7 @@ module IssueHelper
   end
 
   def article_page(page)
-    "page/#{page}/mode/2-up"
+    page == 'cover' ? 'mode/1-up' : "page/#{page}/mode/2-up"
   end
 
   def archive_download_link(issue)
