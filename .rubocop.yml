@@ -1,2 +1,7 @@
+AllCops:
+  Exclude:
+    - 'app/views/**/*.erb'
+    - 'lib/templates/**/*.erb'
+
 Documentation:
   Enabled: false

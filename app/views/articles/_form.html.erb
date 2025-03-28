@@ -52,12 +52,31 @@
                   collection: Machine.all,
                   required: false,
                   input_html: { multiple: true, style: 'height: 6rem;' } %>
-      <%= f.input :tag_ids,
-                  as: :select,
-                  collection: Tag.collection,
-                  required: false,
-                  input_html: { multiple: true, style: 'height: 9rem;' },
-                  hint: 'Curated subject tags to aid advanced searching.' %>
+      <% if action_name == 'show' %>
+        <%= f.input :tag_ids, as: :show %>
+      <% else %>
+        <div data-controller="tag-selector">
+          <%= f.input :tag_ids do %>
+            <div class="tag-input-wrapper">
+              <select data-tag-selector-target="input"
+                      data-action="change->tag-selector#select"
+                      class="tag-select">
+                <option value="">Select a tag...</option>
+                <% Tag.collection.each do |tag| %>
+                  <option value="<%= tag.second %>"><%= tag.first %></option>
+                <% end %>
+              </select>
+            </div>
+            <div data-tag-selector-target="selected" 
+                 class="selected-tags" 
+                 role="list" 
+                 aria-label="Selected tags"></div>
+            <%= hidden_field_tag "article[tag_ids]",
+                                f.object.tag_ids&.join(','),
+                                data: { tag_selector_target: "hidden" } %>
+          <% end %>
+        </div>
+      <% end %>
     </fieldset>
   </div>
   

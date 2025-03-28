@@ -57,6 +57,14 @@ class Article < ApplicationRecord
     Tag.where(id: tag_ids).pluck(:name).join(', ')
   end
 
+  def tag_ids=(ids)
+    if ids.is_a?(String)
+      super(ids.split(',').reject(&:blank?).map(&:to_i))
+    else
+      super(ids.reject(&:blank?))
+    end
+  end
+
   # These results methods could easily be decorators
   def author_for_results
     truncate(author, length: 48)
