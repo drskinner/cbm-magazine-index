@@ -62,7 +62,7 @@
                       data-tag-selector-target="input"
                       data-action="change->tag-selector#select"
                       class="tag-select">
-                <option value="">Select a tag...</option>
+                <option value=""><%= I18n.t('select.tag') %></option>
                 <% Tag.collection.each do |tag| %>
                   <option value="<%= tag.second %>"><%= tag.first %></option>
                 <% end %>

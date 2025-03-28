@@ -7,7 +7,7 @@ export default class extends Controller {
     const tagIds = this.hiddenTarget.value
       .split(/[\s,]+/)
       .filter(id => id.length > 0)
-      .map(id => id.toString()) // Ensure IDs are strings
+      .map(id => id.toString())
     
     this.selectedTags = new Map()
     tagIds.forEach(id => {
@@ -22,7 +22,7 @@ export default class extends Controller {
     if (event.type === "change" || (event.type === "keydown" && event.key === "Enter")) {
       event.preventDefault()
       const select = this.inputTarget
-      const id = select.value.toString() // Ensure ID is string
+      const id = select.value.toString()
       const name = this.getTagName(id)
       
       if (id && !this.selectedTags.has(id)) {
@@ -34,7 +34,7 @@ export default class extends Controller {
   }
   
   remove(event) {
-    const id = event.params.id.toString() // Ensure ID is string
+    const id = event.params.id.toString()
     const deleted = this.selectedTags.delete(id)
     this.updateDisplay()
   }
