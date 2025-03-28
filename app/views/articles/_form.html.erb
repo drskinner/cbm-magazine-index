@@ -58,7 +58,8 @@
         <div data-controller="tag-selector">
           <%= f.input :tag_ids do %>
             <div class="tag-input-wrapper">
-              <select data-tag-selector-target="input"
+              <select id="article_tag_ids"
+                      data-tag-selector-target="input"
                       data-action="change->tag-selector#select"
                       class="tag-select">
                 <option value="">Select a tag...</option>
