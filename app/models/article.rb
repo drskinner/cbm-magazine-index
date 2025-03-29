@@ -15,7 +15,9 @@ class Article < ApplicationRecord
   scope :for_machine, ->(id) { where('machine_ids && ARRAY[?]', id.to_i) }
   # scope :for_machines, ->(ids) { where('machine_ids && ARRAY[?]', ids.map(&:to_i)) }
   scope :has_all_tags, ->(ids) { where('tag_ids @> ARRAY[?]', ids.map(&:to_i)) }
-  scope :has_text, ->(text) { where('description ILIKE ? OR blurb ILIKE ? OR title ILIKE ?', "%#{text}%", "%#{text}%", "%#{text}%") }
+  scope :has_text, ->(text) {
+    where("search_vector @@ plainto_tsquery('english', ?)", text)
+  }
 
   attr_accessor :magazine_id
 
