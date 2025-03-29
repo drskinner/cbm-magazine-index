@@ -61,8 +61,9 @@ class ArticlesController < ApplicationController
             :page,
             :regular_feature,
             :title,
+            :tag_ids,        # Allow string format
             machine_ids: [],
-            tag_ids: []
+            tag_ids: []      # Also allow array format
           )
   end
 end
