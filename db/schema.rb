@@ -10,8 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_12_19_000231) do
+ActiveRecord::Schema[7.1].define(version: 2024_01_01_000000) do
   # These are extensions that must be enabled in order to support this database
+  enable_extension "pg_stat_statements"
   enable_extension "plpgsql"
 
   create_table "api_keys", force: :cascade do |t|
@@ -37,9 +38,11 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_19_000231) do
     t.integer "machine_ids", default: [], array: true
     t.boolean "regular_feature", default: false, null: false
     t.string "archive_page"
+    t.virtual "search_vector", type: :tsvector, as: "(((setweight(to_tsvector('english'::regconfig, COALESCE(description, ''::text)), 'A'::\"char\") || setweight(to_tsvector('english'::regconfig, (COALESCE(title, ''::character varying))::text), 'B'::\"char\")) || setweight(to_tsvector('english'::regconfig, COALESCE(blurb, ''::text)), 'C'::\"char\")) || setweight(to_tsvector('english'::regconfig, (COALESCE(author, ''::character varying))::text), 'D'::\"char\"))", stored: true
     t.index ["classification_id"], name: "index_articles_on_classification_id"
     t.index ["issue_id"], name: "index_articles_on_issue_id"
     t.index ["language_id"], name: "index_articles_on_language_id"
+    t.index ["search_vector"], name: "articles_search_idx", using: :gin
   end
 
   create_table "articles_machines", id: false, force: :cascade do |t|
