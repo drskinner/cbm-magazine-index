@@ -82,6 +82,41 @@ section.status-table {
   flex: 50%;
 }
 
+.tab-content .input-form.welcome-form {
+  margin: 0 0 12px 0;
+  border: 2px solid #1e1c8b;
+}
+
+
+.search-tabs {
+  display: flex;
+  margin-top: 12px;
+  position: relative;
+  top: 2px;
+}
+
+.tab-link {
+  background: linear-gradient(#2e2c9b, #1e1c8b);
+  color: white;
+  text-decoration: none;
+  padding: 5px 20px;
+  border: 2px solid #1e1c8b;
+  border-bottom: none;
+  border-radius: 4px 4px 0 0;
+  margin-right: 8px;
+  font-size: 1.75rem;
+}
+
+.tab-link:hover {
+  background: #5c4ea5;
+  color: white;
+}
+
+.tab-link.active {
+  background: #e2dff0;
+  color: #333;
+}
+
 fieldset.welcome {
   display: grid;
   grid-template-columns: 48% 50%;

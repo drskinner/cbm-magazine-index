@@ -1,40 +1,5 @@
-/* Make this more specific to override input-form's margin */
-.tab-content .input-form.welcome-form {
-  margin: 0 0 12px 0;
-  border: 2px solid #1e1c8b;
-}
-
 .search-form {
   margin-top: 0px;
-}
-
-.search-tabs {
-  display: flex;
-  margin-top: 12px;
-  position: relative;
-  top: 2px;
-}
-
-.tab-link {
-  background: linear-gradient(#2e2c9b, #1e1c8b);
-  color: white;
-  text-decoration: none;
-  padding: 5px 20px;
-  border: 2px solid #1e1c8b;
-  border-bottom: none;
-  border-radius: 4px 4px 0 0;
-  margin-right: 8px;
-  font-size: 1.75rem;
-}
-
-.tab-link:hover {
-  background: #5c4ea5;
-  color: white;
-}
-
-.tab-link.active {
-  background: #e2dff0;
-  color: #333;
 }
 
 .search-form fieldset {
@@ -57,11 +22,6 @@
   border-style: solid;
   border-width: 1px;
   border-color: #e6e6e6 #d4d4d4 #cdcdcd #d4d4d4;
-}
-
-/* Only hide legend when tabs are present */
-.search-tabs + .tab-content .search-form fieldset legend {
-  display: none;
 }
 
 .tab-content {
