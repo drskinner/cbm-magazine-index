@@ -85,6 +85,7 @@ section.status-table {
 fieldset.welcome {
   display: grid;
   grid-template-columns: 48% 50%;
+  margin: 0;
 }
 
 .welcome-form .search-field {
@@ -94,7 +95,7 @@ fieldset.welcome {
 .welcome-form .search-field label {
   text-align: left;
   color: #303060;
-  margin-left: 12px;
+  margin-left: 14px;
   width: auto;
 }
 
@@ -102,7 +103,6 @@ fieldset.welcome {
 .welcome-form .search-field input {
   margin: 0 12px 16px 12px;
 }
-
 
 .welcome-form input.btn-default {
   display: inline-block;

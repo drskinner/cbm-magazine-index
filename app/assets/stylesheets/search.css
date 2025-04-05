@@ -1,14 +1,52 @@
+/* Make this more specific to override input-form's margin */
+.tab-content .input-form.welcome-form {
+  margin: 0 0 12px 0;
+  border: 2px solid #1e1c8b;
+}
+
 .search-form {
   margin-top: 0px;
 }
 
-.search-form fieldset {
-  background: #efefef;
-  border: none;
-  padding: 20px 0px 5px 0px;
-  margin-bottom: 12px;
+.search-tabs {
+  display: flex;
+  margin-top: 12px;
+  position: relative;
+  top: 2px;
 }
 
+.tab-link {
+  background: linear-gradient(#2e2c9b, #1e1c8b);
+  color: white;
+  text-decoration: none;
+  padding: 5px 20px;
+  border: 2px solid #1e1c8b;
+  border-bottom: none;
+  border-radius: 4px 4px 0 0;
+  margin-right: 8px;
+  font-size: 1.75rem;
+}
+
+.tab-link:hover {
+  background: #5c4ea5;
+  color: white;
+}
+
+.tab-link.active {
+  background: #e2dff0;
+  color: #333;
+}
+
+.search-form fieldset {
+  background: #efefef;
+  border: 1px solid #d4d4d4;
+  padding: 20px 0px 5px 0px;
+  margin-top: 0;
+  margin-bottom: 12px;
+  border-radius: 0 4px 4px 4px;
+}
+
+/* Make legend styles match the admin forms */
 .search-form fieldset legend {
   background: linear-gradient(#2e2c9b, #1e1c8b);
   width: 100%;
@@ -19,6 +57,19 @@
   border-style: solid;
   border-width: 1px;
   border-color: #e6e6e6 #d4d4d4 #cdcdcd #d4d4d4;
+}
+
+/* Only hide legend when tabs are present */
+.search-tabs + .tab-content .search-form fieldset legend {
+  display: none;
+}
+
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
 }
 
 .search-form div.search-field-top {
@@ -56,7 +107,11 @@ select.search-select {
 }
 
 div.search-buttons {
-  margin-top: 24px;
+  margin-top: 12px;
+}
+
+div.search-buttons.simple-search {
+  margin-top: 0px;
 }
 
 .search-form input.btn-default {
