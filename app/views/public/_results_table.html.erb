@@ -6,6 +6,12 @@
           <%= link_to article.title_for_results, "/public/article/#{article.id}", data: { turbo_frame: 'modal' }, onclick: 'showModal();' %>
           &ndash;
           <%= article.author_for_results %>
+          <% if can? :update, Article %>
+            <%= link_to svg('edit'),
+                        edit_article_path(article),
+                        title: I18n.t('index_table.edit'),
+                        class: 'icon' %>
+          <% end %>
         </p>
         <p><%= article.issue_for_results %>, p. <%= article.page %></p>
         <p><%= article.description_for_results %></p>

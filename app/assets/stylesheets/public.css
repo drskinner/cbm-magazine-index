@@ -74,6 +74,11 @@ section.status-table {
   color: #ee0000;
 }
 
+.results-row .icon svg {
+  max-height: 16px;  /* Smaller than the default 24px */
+  float: right;
+}
+
 .sample-search-links {
   display: flex;
 }

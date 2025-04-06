@@ -11,7 +11,9 @@
     </div>
     <div class="search-field">
       <label><%= I18n.t('search.has_all_tags') %></label>
-      <div data-controller="tag-selector" class="tag-input-wrapper sidebar-tag-wrapper">
+      <div data-controller="tag-selector"
+           data-tag-selector-hide-placeholder-value="true"
+           class="tag-input-wrapper sidebar-tag-wrapper">
         <select id="has_all_tags"
                 data-tag-selector-target="input"
                 multiple>
