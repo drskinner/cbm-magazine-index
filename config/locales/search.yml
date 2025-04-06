@@ -1,5 +1,6 @@
 en:
   search:
+    has_all_tags: "Must Have All Tags"
     author_contains: "Author's Name Contains"
     author_contains_placeholder: "Enter a name"
     by_article_type: "Article Type"

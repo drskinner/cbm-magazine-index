@@ -10,6 +10,21 @@
                         class: 'search-text' %>
     </div>
     <div class="search-field">
+      <label><%= I18n.t('search.has_all_tags') %></label>
+      <div data-controller="tag-selector" class="tag-input-wrapper sidebar-tag-wrapper">
+        <select id="has_all_tags"
+                data-tag-selector-target="input"
+                multiple>
+          <% Tag.collection.each do |tag| %>
+            <option value="<%= tag.second %>"><%= tag.first %></option>
+          <% end %>
+        </select>
+        <%= hidden_field_tag "has_all_tags",
+                            params[:has_all_tags],
+                            data: { tag_selector_target: "hidden" } %>
+      </div>
+    </div>
+    <div class="search-field">
       <label><%= I18n.t('search.author_contains') %></label>
       <%= text_field_tag :author_contains,
                          params['author_contains'],
