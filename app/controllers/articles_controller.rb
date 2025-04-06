@@ -28,7 +28,7 @@ class ArticlesController < ApplicationController
     if @article.save
       redirect_to @article
     else
-      render 'new'
+      render 'new', status: :unprocessable_entity
     end
   end
 
@@ -42,7 +42,7 @@ class ArticlesController < ApplicationController
     if @article.update(article_params)
       redirect_to @article
     else
-      render 'edit'
+      render 'edit', status: :unprocessable_entity
     end
   end
 
@@ -61,8 +61,9 @@ class ArticlesController < ApplicationController
             :page,
             :regular_feature,
             :title,
+            :tag_ids,        # Allow string format
             machine_ids: [],
-            tag_ids: []
+            tag_ids: []      # Also allow array format
           )
   end
 end

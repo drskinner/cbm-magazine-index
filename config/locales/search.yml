@@ -1,13 +1,20 @@
 en:
   search:
     author_contains: "Author's Name Contains"
+    author_contains_placeholder: "Enter a name"
     by_article_type: "Article Type"
     by_language: "Language"
     by_magazine: "Magazine"
     by_magazine_id: "Magazine"
     by_sequence: "By Sequence/Issue Number"
     by_year: "Publication Year"
+    case_insensitive: "(case-insensitive)"
     for_machine: "Machine"
-    has_text: "Contains String"
+    has_text: "Search Article Details"
+    has_text_placeholder: "Enter search terms"
+    has_text_simple: "Search Articles"
     name_contains: "Name Contains"
     title: "Search Options"
+    tabs:
+      simple: "Simple Search"
+      advanced: "Advanced Search"

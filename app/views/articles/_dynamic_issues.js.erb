@@ -1,0 +1,36 @@
+<script>
+function narrowIssueSelection() {
+  let magazineId = document.querySelector('#article_magazine_id').value;
+  let issueSelector = document.querySelector('#article_issue_id');
+  let allIssues = [];
+
+  <% Magazine.ids.each do |m| %>
+    <% Issue.by_magazine_id(m).order(sequence: :asc).each do |i| %>
+      allIssues.push({magazineId: <%= m %>, issueId: <%= i.id %>, issueName: "<%= raw i.to_s %>"});
+    <% end %>
+  <% end %>
+
+  removeOptions(issueSelector);
+
+  for (const issue of allIssues) {
+    if (issue.magazineId == magazineId) {
+      addOption(issueSelector, issue.issueId, issue.issueName);
+    }
+  }
+};
+
+function removeOptions(selectElement) {
+   var i, L = selectElement.options.length - 1;
+   for(i = L; i >= 1; i--) {
+      selectElement.remove(i);
+   }
+}
+
+function addOption(selectElement, key, value) {
+  let option = document.createElement("option");
+
+  option.value = key;
+  option.text = value;
+  selectElement.add(option);
+}
+</script>

@@ -15,7 +15,9 @@ class Article < ApplicationRecord
   scope :for_machine, ->(id) { where('machine_ids && ARRAY[?]', id.to_i) }
   # scope :for_machines, ->(ids) { where('machine_ids && ARRAY[?]', ids.map(&:to_i)) }
   scope :has_all_tags, ->(ids) { where('tag_ids @> ARRAY[?]', ids.map(&:to_i)) }
-  scope :has_text, ->(text) { where('description ILIKE ? OR blurb ILIKE ? OR title ILIKE ?', "%#{text}%", "%#{text}%", "%#{text}%") }
+  scope :has_text, ->(text) {
+    where("search_vector @@ plainto_tsquery('english', ?)", text)
+  }
 
   attr_accessor :magazine_id
 
@@ -33,6 +35,14 @@ class Article < ApplicationRecord
     classification.name
   end
 
+  def description_display
+    sanitize description
+  end
+
+  def issue_id_display
+    issue_for_results
+  end
+
   def language_id_display
     language&.name
   end
@@ -47,6 +57,14 @@ class Article < ApplicationRecord
 
   def tag_ids_display
     Tag.where(id: tag_ids).pluck(:name).join(', ')
+  end
+
+  def tag_ids=(ids)
+    if ids.is_a?(String)
+      super(ids.split(',').reject(&:blank?).map(&:to_i))
+    else
+      super(ids.reject(&:blank?))
+    end
   end
 
   # These results methods could easily be decorators

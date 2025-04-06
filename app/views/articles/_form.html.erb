@@ -12,7 +12,7 @@
                   as: :select,
                   collection: Magazine.collection,
                   required: true,
-                  input_html: { onChange: "foo();" },
+                  input_html: { onChange: "narrowIssueSelection();" },
                   prompt: I18n.t('select.magazine') %>
                   <div id="results"></div>
       <%= f.association :issue,
@@ -52,12 +52,32 @@
                   collection: Machine.all,
                   required: false,
                   input_html: { multiple: true, style: 'height: 6rem;' } %>
-      <%= f.input :tag_ids,
-                  as: :select,
-                  collection: Tag.collection,
-                  required: false,
-                  input_html: { multiple: true, style: 'height: 9rem;' },
-                  hint: 'Curated subject tags to aid advanced searching.' %>
+      <% if action_name == 'show' %>
+        <%= f.input :tag_ids, as: :show %>
+      <% else %>
+        <div data-controller="tag-selector">
+          <%= f.input :tag_ids do %>
+            <div class="tag-input-wrapper">
+              <select id="article_tag_ids"
+                      data-tag-selector-target="input"
+                      data-action="change->tag-selector#select"
+                      class="tag-select">
+                <option value=""><%= I18n.t('select.tag') %></option>
+                <% Tag.collection.each do |tag| %>
+                  <option value="<%= tag.second %>"><%= tag.first %></option>
+                <% end %>
+              </select>
+            </div>
+            <div data-tag-selector-target="selected" 
+                 class="selected-tags" 
+                 role="list" 
+                 aria-label="Selected tags"></div>
+            <%= hidden_field_tag "article[tag_ids]",
+                                f.object.tag_ids&.join(','),
+                                data: { tag_selector_target: "hidden" } %>
+          <% end %>
+        </div>
+      <% end %>
     </fieldset>
   </div>
   
@@ -65,5 +85,5 @@
     <%= f.button :submit unless action_name == 'show' %>
   </div>
 
-  <%#= render partial: 'dynamic_issues', formats: [:js], locals: { f: f } %>
+  <%= render partial: 'dynamic_issues', formats: [:js], locals: { f: f } %>
 <% end %>

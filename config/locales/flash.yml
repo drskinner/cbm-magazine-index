@@ -1,0 +1,4 @@
+en:
+  flash:
+    error:
+      form_validation: "Please correct the following and resubmit:"
