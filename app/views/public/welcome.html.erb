@@ -15,10 +15,120 @@
          data-action="click->search-tabs#switch"
          data-tab="advanced"><%= I18n.t('search.tabs.advanced') %></a>,
       which lets you search by magazine, article type, author, and more.</p>
-    <p>You can also try one of these searches:</p>
+  </section>
+
+  <section class="wall-of-text">
+    <div class="search-tabs">
+      <a href="#simple-search"
+         class="tab-link active"
+         data-search-tabs-target="tab"
+         data-action="click->search-tabs#switch"
+         data-tab="simple"><%= I18n.t('search.tabs.simple') %></a>
+      <a href="#advanced-search"
+         class="tab-link"
+         data-search-tabs-target="tab"
+         data-action="click->search-tabs#switch"
+         data-tab="advanced"><%= I18n.t('search.tabs.advanced') %></a>
+    </div>
+
+    <div class="tab-content"
+         id="simple-search"
+         data-search-tabs-target="content">
+      <%= form_tag public_search_path, method: 'get', class: 'input-form welcome-form' do %>
+        <fieldset class="welcome">
+          <div class="search-field">
+            <label><%= I18n.t('search.has_text_simple') %></label>
+            <%= text_field_tag :has_text,
+                              params['has_text'],
+                              placeholder: "#{I18n.t('search.has_text_placeholder')} #{I18n.t('search.case_insensitive')}",
+                              class: 'search-text' %>
+          </div>
+          <div class="search-field"></div>
+          <div class="search-buttons simple-search">
+            <%= submit_tag I18n.t('button.search.submit'), name: 'source', class: 'btn btn-default' %>
+          </div>
+        </fieldset>
+      <% end %>
+    </div>
+
+    <div class="tab-content" id="advanced-search" data-search-tabs-target="content">
+      <%= form_tag public_search_path, method: 'get', class: 'input-form welcome-form' do %>
+        <fieldset class="welcome">
+          <div class="search-field">
+            <label><%= I18n.t('search.has_text') %></label>
+            <%= text_field_tag :has_text,
+                               params['has_text'],
+                               placeholder: "#{I18n.t('search.has_text_placeholder')} #{I18n.t('search.case_insensitive')}",
+                               class: 'search-text-tall' %>
+          </div>
+          <div class="search-field">
+            <label><%= I18n.t('search.has_all_tags') %></label>
+            <div data-controller="tag-selector" class="tag-input-wrapper">
+              <select id="has_all_tags"
+                      data-tag-selector-target="input"
+                      multiple>
+                <% Tag.collection.each do |tag| %>
+                  <option value="<%= tag.second %>"><%= tag.first %></option>
+                <% end %>
+              </select>
+              <%= hidden_field_tag "has_all_tags",
+                                  params[:has_all_tags]&.join(','),
+                                  data: { tag_selector_target: "hidden" } %>
+            </div>
+          </div>
+          <div class="search-field">
+            <label><%= I18n.t('search.by_magazine_id') %></label>
+            <%= select_tag :by_magazine_id,
+                           options_for_select(Magazine.collection, params[:by_magazine_id]),
+                           prompt: I18n.t('select.magazine'),
+                           class: 'search-select' %>
+          </div>
+          <div class="search-field">
+            <label><%= I18n.t('search.author_contains') %></label>
+            <%= text_field_tag :author_contains,
+                               params['author_contains'],
+                               placeholder: "#{I18n.t('search.author_contains_placeholder')} #{I18n.t('search.case_insensitive')}",
+                               class: 'search-text' %>
+          </div>
+          <div class="search-field">
+            <label><%= I18n.t('search.by_year') %></label>
+            <%= select_tag :by_year,
+                           options_for_select((Rails.configuration.first_year..Rails.configuration.last_year), params[:by_year]),
+                           prompt: I18n.t('select.year'),
+                           class: 'search-select' %>
+          </div>
+          <div class="search-field">
+            <label><%= I18n.t('search.by_article_type') %></label>
+            <%= select_tag :by_article_type,
+                           options_for_select(Classification.collection, params[:by_article_type]),
+                           prompt: I18n.t('select.article_type'),
+                           class: 'search-select' %>
+          </div>
+          <div class="search-field">
+            <label><%= I18n.t('search.for_machine') %></label>
+            <%= select_tag :for_machine,
+                           options_for_select(Machine.collection, params[:for_machine]),
+                           prompt: I18n.t('select.machine'),
+                           class: 'search-select' %>
+          </div>
+          <div class="search-field">
+            <label><%= I18n.t('search.by_language') %></label>
+            <%= select_tag :by_language,
+                           options_for_select(Language.collection, params[:by_language]),
+                           prompt: I18n.t('select.language'),
+                           class: 'search-select' %>
+          </div>
+          <div class="search-buttons">
+            <%= submit_tag I18n.t('button.search.submit'), name: 'source', class: 'btn btn-default' %>
+            <%= link_to I18n.t('button.search.clear'), public_welcome_path, class: 'btn btn-clear', data: { turbolinks: false }  %>
+          </div>
+        </fieldset>
+      <% end %>
+    </div>
   </section>
 
   <section class="wall-of-text sample-search-links">
+    <p>Not sure where to start? Try one of these searches:</p>
     <div class="sample-search-column">
       <ul>
         <li>
@@ -71,94 +181,6 @@
                 data: { turbolinks: false } %>
         </li>
       </ul>
-    </div>
-  </section>
-
-  <section class="wall-of-text">
-    <div class="search-tabs">
-      <a href="#simple-search" 
-         class="tab-link active" 
-         data-search-tabs-target="tab"
-         data-action="click->search-tabs#switch"
-         data-tab="simple"><%= I18n.t('search.tabs.simple') %></a>
-      <a href="#advanced-search" 
-         class="tab-link" 
-         data-search-tabs-target="tab"
-         data-action="click->search-tabs#switch"
-         data-tab="advanced"><%= I18n.t('search.tabs.advanced') %></a>
-    </div>
-
-    <div class="tab-content" 
-         id="simple-search" 
-         data-search-tabs-target="content">
-      <%= form_tag public_search_path, method: 'get', class: 'input-form welcome-form' do %>
-        <fieldset class="welcome">
-          <div class="search-field">
-            <label><%= I18n.t('search.has_text_simple') %></label>
-            <%= text_field_tag :has_text,
-                              params['has_text'],
-                              placeholder: "#{I18n.t('search.has_text_placeholder')} #{I18n.t('search.case_insensitive')}",
-                              class: 'search-text' %>
-          </div>
-          <div class="search-field"></div>
-          <div class="search-buttons simple-search">
-            <%= submit_tag I18n.t('button.search.submit'), name: 'source', class: 'btn btn-default' %>
-          </div>
-        </fieldset>
-      <% end %>
-    </div>
-
-    <div class="tab-content" id="advanced-search" data-search-tabs-target="content">
-      <%= form_tag public_search_path, method: 'get', class: 'input-form welcome-form' do %>
-        <fieldset class="welcome">
-          <div class="search-field">
-            <label><%= I18n.t('search.has_text') %></label>
-            <%= text_field_tag :has_text,
-                               params['has_text'],
-                               placeholder: "#{I18n.t('search.has_text_placeholder')} #{I18n.t('search.case_insensitive')}",
-                               class: 'search-text' %>
-          </div>
-          <div class="search-field">
-            <label><%= I18n.t('search.by_magazine_id') %></label>
-            <%= select_tag :by_magazine_id,
-                           options_for_select(Magazine.collection, params[:by_magazine_id]),
-                           prompt: I18n.t('select.magazine'),
-                           class: 'search-select' %>
-          </div>
-          <div class="search-field">
-            <label><%= I18n.t('search.author_contains') %></label>
-            <%= text_field_tag :author_contains,
-                               params['author_contains'],
-                               placeholder: "#{I18n.t('search.author_contains_placeholder')} #{I18n.t('search.case_insensitive')}",
-                               class: 'search-text' %>
-          </div>
-          <div class="search-field">
-            <label><%= I18n.t('search.by_year') %></label>
-            <%= select_tag :by_year,
-                           options_for_select((Rails.configuration.first_year..Rails.configuration.last_year), params[:by_year]),
-                           prompt: I18n.t('select.year'),
-                           class: 'search-select' %>
-          </div>
-          <div class="search-field">
-            <label><%= I18n.t('search.by_article_type') %></label>
-            <%= select_tag :by_article_type,
-                           options_for_select(Classification.collection, params[:by_article_type]),
-                           prompt: I18n.t('select.article_type'),
-                           class: 'search-select' %>
-          </div>
-          <div class="search-field">
-            <label><%= I18n.t('search.by_language') %></label>
-            <%= select_tag :by_language,
-                           options_for_select(Language.collection, params[:by_language]),
-                           prompt: I18n.t('select.language'),
-                           class: 'search-select' %>
-          </div>
-          <div class="search-buttons">
-            <%= submit_tag I18n.t('button.search.submit'), name: 'source', class: 'btn btn-default' %>
-            <%= link_to I18n.t('button.search.clear'), public_welcome_path, class: 'btn btn-clear', data: { turbolinks: false }  %>
-          </div>
-        </fieldset>
-      <% end %>
     </div>
   </section>
 </div>

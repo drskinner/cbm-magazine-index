@@ -14,7 +14,10 @@ class Article < ApplicationRecord
   scope :by_year, ->(year) { joins(:issue).where(issue: { year: year }) }
   scope :for_machine, ->(id) { where('machine_ids && ARRAY[?]', id.to_i) }
   # scope :for_machines, ->(ids) { where('machine_ids && ARRAY[?]', ids.map(&:to_i)) }
-  scope :has_all_tags, ->(ids) { where('tag_ids @> ARRAY[?]', ids.map(&:to_i)) }
+  scope :has_all_tags, ->(ids) {
+    ids = ids.split(',') if ids.is_a?(String)
+    where('tag_ids @> ARRAY[?]', ids.map(&:to_i))
+  }
   scope :has_text, ->(text) {
     where("search_vector @@ plainto_tsquery('english', ?)", text)
   }
