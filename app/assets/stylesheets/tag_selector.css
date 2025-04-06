@@ -19,6 +19,24 @@
   min-width: auto;
 }
 
+.search-form .sidebar-tag-wrapper .ts-control {
+  font-size: .833rem !important;
+}
+
+.search-form .sidebar-tag-wrapper .ts-wrapper.has-items .ts-control > input,
+.search-form .sidebar-tag-wrapper .ts-control > input {
+  font-size: .833rem !important;
+}
+
+.search-form .sidebar-tag-wrapper .ts-dropdown {
+  font-size: .833rem !important;
+}
+
+.search-form .sidebar-tag-wrapper .ts-wrapper.multi .ts-control .item,
+.search-form .sidebar-tag-wrapper .ts-wrapper.multi.has-items .ts-control > .item {
+  font-size: .833rem;
+}
+
 .ts-wrapper {
   min-height: 1.75rem;
 }

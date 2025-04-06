@@ -3,6 +3,9 @@ import "tom-select"
 
 export default class extends Controller {
   static targets = ["input", "hidden"]
+  static values = {
+    hidePlaceholder: { type: Boolean, default: false }
+  }
 
   connect() {
     this.tomSelect = new window.TomSelect(this.inputTarget, {
@@ -17,7 +20,7 @@ export default class extends Controller {
       labelField: 'textContent',
       searchField: ['textContent'],
       items: this.initialSelectedValues(),
-      hidePlaceholder: false,  // Make sure placeholder is visible
+      hidePlaceholder: this.hidePlaceholderValue,
       placeholder: 'Type to search tags...',
       onChange: (values) => {
         this.hiddenTarget.value = values.join(',')
