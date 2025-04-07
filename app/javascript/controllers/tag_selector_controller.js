@@ -12,6 +12,7 @@ export default class extends Controller {
       plugins: ['remove_button'],
       create: true,
       closeAfterSelect: true,
+      maxOptions: null,
       onItemAdd: function() {
         this.setTextboxValue('')
         this.refreshOptions()
