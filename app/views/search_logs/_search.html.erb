@@ -1,0 +1,15 @@
+<%= form_tag search_logs_path, method: 'get', class: 'search-form' do %>
+  <fieldset>
+    <legend>
+      <span>Filter Options</span>
+    </legend>
+    <div class="search-field-top">
+      <%= check_box_tag :zero_results, '1', params[:zero_results] %>
+      <%= label_tag :zero_results, 'Zero results' %>
+    </div>
+    <div class="search-buttons">
+      <%= submit_tag 'Filter', name: nil, class: 'btn btn-default' %>
+      <%= link_to 'Clear', search_logs_path, class: 'btn btn-clear' %>
+    </div>
+  </fieldset>
+<% end %>

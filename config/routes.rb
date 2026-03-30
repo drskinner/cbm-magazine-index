@@ -18,4 +18,5 @@ Rails.application.routes.draw do
   resources :articles
   resources :issues
   resources :magazines
+  resources :search_logs, only: [:index, :show]
 end

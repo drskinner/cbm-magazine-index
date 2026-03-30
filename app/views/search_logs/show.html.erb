@@ -1,0 +1,39 @@
+<% content_for :title do %>
+  Search Log #<%= @search_log.id %>
+  <%= link_to 'Back to index', search_logs_path %> |
+  <%= link_to 'Re-run search', @search_log.search_url, target: '_blank' %>
+<% end %>
+
+<div class="input-form">
+  <fieldset>
+    <legend>Search Log Details</legend>
+
+    <div class="input">
+      <label>ID:</label>
+      <div class="show-input"><%= @search_log.id %></div>
+    </div>
+
+    <div class="input">
+      <label>Date:</label>
+      <div class="show-input"><%= @search_log.created_at.strftime('%Y-%m-%d %H:%M:%S') %></div>
+    </div>
+
+    <div class="input">
+      <label>Result Count:</label>
+      <div class="show-input"><%= @search_log.result_count %></div>
+    </div>
+  </fieldset>
+
+  <% unless @search_log.search_params_display.empty? %>
+    <fieldset>
+      <legend>Search Parameters</legend>
+
+      <% @search_log.search_params_display.each do |label, value| %>
+        <div class="input">
+          <label><%= label %>:</label>
+          <div class="show-input"><%= value %></div>
+        </div>
+      <% end %>
+    </fieldset>
+  <% end %>
+</div>

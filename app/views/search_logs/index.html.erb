@@ -1,0 +1,19 @@
+<% content_for :title do %>
+  <%= I18n.t('page.action_title.index', model: 'Search Logs') %>
+<% end %>
+
+<div class="index-page">
+  <div class="pagination-info">
+    <%== pagination_info(page: params[:page], page_size: @pagy.items, full_count: @pagy.count) %>
+  </div>
+
+  <div></div>
+
+  <div>
+    <%= render 'index_table' %>
+  </div>
+
+  <div>
+    <%= render 'search' %>
+  </div>
+</div>
