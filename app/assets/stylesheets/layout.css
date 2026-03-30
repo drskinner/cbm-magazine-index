@@ -37,10 +37,11 @@ header {
 }
 
 #admin-nav {
-  font-size: 200%;
+  font-size: 125%;
   color: #000080;
-  margin: 20px 0 10px 0;
-  float: left;
+  margin: 5px 0 0 0;
+  justify-content: right;
+  height: auto;
 }
 
 #admin-nav a {

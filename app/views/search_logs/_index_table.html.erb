@@ -1,0 +1,32 @@
+<div id="index-table">
+  <table class="index-table table-striped">
+    <tr class="search-log-index-row">
+      <th>Date</th>
+      <th>Search Params</th>
+      <th>Results</th>
+      <th class="action"></th>
+    </tr>
+
+    <% @search_logs.each do |log| %>
+      <tr class="search-log-index-row">
+        <td><%= log.created_at.strftime('%Y-%m-%d %H:%M') %></td>
+        <td><%= log.search_summary %></td>
+        <td><%= log.result_count %></td>
+        <td class="action">
+          <%= link_to svg('view'),
+                      search_log_path(log),
+                      title: I18n.t('index_table.view') %>
+        </td>
+        <td class="action">
+          <%= link_to svg('search'),
+                      log.search_url,
+                      target: '_blank',
+                      rel: 'noopener',
+                      title: 'Rerun search' %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+
+  <%== pagy_nav @pagy %>
+</div>
