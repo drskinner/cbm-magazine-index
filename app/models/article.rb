@@ -6,7 +6,10 @@ class Article < ApplicationRecord
   belongs_to :issue
   belongs_to :language, optional: true
 
-  scope :author_contains, ->(name) { where('author ILIKE ?', "%#{name}%") }
+  scope :author_contains, ->(name) { 
+    parts = name.gsub(',', '').split
+    where(parts.map { 'author ILIKE ?' }.join(' AND '), *parts.map { |part| "%#{part}%" })
+  }
   scope :by_article_type, ->(id) { where(classification_id: id) }
   scope :by_language, ->(id) { where(language_id: id) }
   scope :by_magazine_id, ->(id) { joins(:issue).where(issue: { magazine_id: id }) }
