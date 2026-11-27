@@ -10,6 +10,26 @@ class ApiController < ApplicationController
     end
   end
 
+  def search
+    @articles = Article.search(has_text: params[:q])
+                      .includes(issue: :magazine)
+                      .limit(5)
+                      .map do |a|
+      {
+        title: a.title,
+        author: a.author,
+        magazine: a.issue.magazine.to_s,
+        magazine_slug: a.issue.magazine.slug,
+        date: a.issue.date_display,
+        page: a.page
+      }
+    end
+
+    respond_to do |format|
+      format.json { render json: @articles, layout: true }
+    end
+  end
+
   def status_counts
     @counts = { articles: Article.count, issues: Issue.count }
 
